@@ -9,9 +9,9 @@
 
 Create a new environment
 
-```
-conda create -p venv python==3.10 -y
-```
+```conda create -p venv python==3.10 -y```
 
 ### when your gunicorn app:app doesn't work try this on command prompt
-```waitress-serve src app:app```
+```
+waitress-serve src app:app
+```
