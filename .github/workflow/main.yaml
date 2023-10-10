@@ -1,0 +1,27 @@
+# Your workflow name.
+name: Deploy to Render.
+
+# Run workflow on every push to main branch.
+on:
+  push:
+    branches: [main]
+
+# Your workflows jobs.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check-out your repository.
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Build and deploy a Docker container to Render.
+      - name: Build, Push and Release a Docker container to Render.
+        uses: render/deploy@v2
+        with:
+          email: ${{ secrets.RENDER_EMAIL }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          service_name: ${{ secrets.RENDER_APP_NAME }}
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: "--no-cache"
